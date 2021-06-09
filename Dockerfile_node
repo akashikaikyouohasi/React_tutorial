@@ -1,0 +1,8 @@
+FROM node:15.14.0-buster-slim as builder
+WORKDIR /usr/src/app
+
+RUN apt-get upgrade
+RUN yarn global add create-react-app
+
+#WORKDIR /usr/src/app/react-app
+#CMD yarn start
