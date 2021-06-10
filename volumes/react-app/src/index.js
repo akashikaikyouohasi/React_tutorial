@@ -5,10 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
   render() {
     return (
-      <button className="square">
-        {this.props.value}  {/* props(properties)のvalueの値を表示している */}
+      <button className="square" onClick={() => this.setState({value: 'X'}) }>
+        {this.state.value}
       </button>
     );
   }
