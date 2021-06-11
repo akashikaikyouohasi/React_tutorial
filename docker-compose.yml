@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile_node
     volumes:
-      - ./volumes:/usr/src/app
+      - ./volumes2:/usr/src/app
     command: sh -c "cd react-app && yarn start"
     ports:
       - "3000:3000"
