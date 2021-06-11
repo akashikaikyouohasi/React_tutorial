@@ -20,9 +20,14 @@ docker-compose run app sh -c "cd react-app&& yarn build"
 ## Reactチュートリアル三目並べ
 Reactのチュートリアルの三目並べです。
 docker-compose.ymlのvolumesを以下のようにしてください。
-「- ./volumes:/usr/src/app」
+```
+- ./volumes:/usr/src/app
+```
 
 ## 別のアプリ
 docker-compose.ymlのvolumesを以下のようにしてください。
-「- ./volumes2:/usr/src/app」
+```
+- ./volumes2:/usr/src/app
+```
+
 
