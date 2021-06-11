@@ -5,24 +5,36 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 class Square extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null,
-    };
-  }
   render() {
     return (
-      <button className="square" onClick={() => this.setState({value: 'X'}) }>
-        {this.state.value}
+      <button className="square" onClick={() => this.props.onClick() }>
+        {this.props.value}
       </button>
     );
   }
 }
 
 class Board extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares: squares});
+  }
+
   renderSquare(i){
-    return <Square value={i} />;  /* Squareコンポーネントにprops(properties)としてvalueの値を渡している */
+    return (
+      <Square 
+        value={this.state.squares[i]} 
+        onClick={() => this.handleClick(i)} 
+      />
+    );  /* Squareコンポーネントにprops(properties)としてvalueの値を渡している */
   }
 
   render() {
@@ -60,7 +72,7 @@ class Game extends React.Component {
         <div className="game-board">
           <Board /> {/* Boardコンポーネントを取得している */}
         </div>
-        <div className="geme-info">
+        <div className="game-info">
           <div>{/* status */}</div>
           <ol>{/* TODO */}</ol>
         </div>
