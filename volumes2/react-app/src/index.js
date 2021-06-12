@@ -7,9 +7,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   /* StrictModeとは厳格モード。 */
   <React.StrictMode>
-    <App title="App"
-      message="This is App Component!"
-    />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
