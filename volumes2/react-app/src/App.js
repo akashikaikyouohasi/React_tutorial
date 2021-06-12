@@ -3,55 +3,49 @@ import './App.css';
 
 
 class App extends Component{
-  data = [
-    "This is list sample.",
-    "これはリストのサンプルです。",
-    "配列をリストに変換します"
-  ]
-
-  area = {
-    width: "500px",
-    height: "500px",
-    border: "1px solid blue"
-  }
+  input = ''
 
   constructor(props){
     super(props);
     this.state = {
-      list: this.data
+      title: 'input form',
+      message: 'type your name',
+      max: 10,
     }
+    this.doCheck = this.doCheck.bind(this)
+    this.doChange = this.doChange.bind(this)
+    this.doSubmit = this.doSubmit.bind(this)
   }
 
-/*   doAction(event){
-    let x = event.pageX
-    let y = event.pageY
-    this.data.push({x:x, y:y})
+  doChange(event) {
+    this.input = event.target.value;
+  }
 
+  doSubmit(event) {
     this.setState({
-      list: this.data
+      title: 'send form',
+      message: 'Hello, ' + this.input + '!!'
     })
+    event.preventDefault()
   }
 
-  draw(d){
-    let styles = {
-      position: "absolute",
-      left: (d.x - 25) + "px",
-      top: (d.y - 25) + "px",
-      width: "50px",
-      height: "50px",
-      backgroundColor: "#66f3",
-    }
-    return <div style={styles}></div>
-  } */
 
   render(){
-
     return (
       <div>
         <h1 className="bg-primary text-white display-4">react</h1>
         <div className="container">
-        <p className="subtitle">Show List.</p>
-          <List title="サンプル・リスト" data={this.data} />
+          <h4>{this.state.title}</h4>
+          <p className="card h5 p-3">{this.state.message}</p>
+          <div className="alert alert-primary mt-3">
+            <form onSubmit={this.doSubmit}>
+              <div className="form=group">
+                <label>Message:</label>
+                <input type="text"  className="form-control" onChange={this.doChange} required pattern="[A-Za-z_,.]+" />
+              </div>
+              <input type="submit" className="btn btn-primary" value="Click" />
+            </form>
+          </div>
         </div> 
       </div>
     );
@@ -59,51 +53,34 @@ class App extends Component{
 }
 
 
-class List extends Component {
-  number = 1
+class Message extends Component {
+  li = {
+    fontSize: "14px",
+    color: "#090",
+    fontWeight: 'bold',
+  }
+  
   render() {
-    let data = this.props.data;
+    let content = this.props.children
+    let arr = content.split('。')
+    let arr2 = [];
+    for(let i=0; i < arr.length; i++){
+      arr2.push(arr[i]);
+    }
+    let list = arr2.map( (value, key) =>(
+      <li className="list-group-item" style={this.li} key={key}>
+        {key + 1}. {value} .
+      </li>
+    ))
+
     return(
     <div>
-      <p className="h5 text-center">{this.props.title}</p>
-      <ul className="list-group">
-        {data.map( (item, key) =>
-          <li className="list-group-item" key={key}>
-            <Item number={key+1} value={item} />
-          </li>
-        )}
-      </ul>
+      <h2>{this.props.title}</h2>
+      <ol className="list-group">{list}</ol>
     </div>
     );
   }
 }
-
-class Item extends Component {
-  itm = {
-    fontSize: "16px",
-    color: "#00f",
-    textDecoration: 'underline',
-    textDecorationColor: "#ddf"
-  }
-
-  num = {
-    fontWeight: "bold",
-    color: "red"
-  }
-
-  render(){
-    return (
-      <p style={this.itm}>
-        <span stule={this.num}>
-          [{this.props.number}]&nbsp;
-        </span>
-        {this.props.value}
-      </p>
-    )
-  }
-}
-
-
 
 export default App;
 

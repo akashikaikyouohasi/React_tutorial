@@ -30,4 +30,8 @@ docker-compose.ymlのvolumesを以下のようにしてください。
 - ./volumes2:/usr/src/app
 ```
 
-
+## typescriptを使用したアプリ
+docker-compose.ymlのvolumesを以下のようにしてください。
+```
+- ./volumes3:/usr/src/app
+```
