@@ -6,3 +6,7 @@ RUN yarn global add create-react-app
 
 #WORKDIR /usr/src/app/react-app
 #CMD yarn start
+
+# Update typescript tools
+#RUN yarn upgrade-interactive --latest
+#RUN yarn upgrade typescript@latest

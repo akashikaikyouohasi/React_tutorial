@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import { VFC } from 'react';
+import CharacterList, { Character } from './CharacterList';
 import './App.css';
 
-function App() {
+const App: VFC = () => {
+  const characters: Character[] = [
+    {
+      id: 1,
+      name: '花道',
+      grade: 1,
+      height: 189.2,
+    },
+    {
+      id: 2,
+      name: '流川',
+      grade: 1,
+      height: 187,
+    },
+    {
+      id: 3,
+      name: '宮城リョータ',
+      grade: 2,
+      height: 168,
+    },
+    {
+      id: 4,
+      name: '三井',
+      grade: 3,
+    },
+    {
+      id: 5,
+      name: '赤木',
+      grade: 3,
+      height: 197,
+    },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="container">
+      <header>
+        <h1>「SLAM DUNK」登場人物</h1>
       </header>
+      <CharacterList school="湘北高校" characters={characters} />
     </div>
   );
-}
+};
 
 export default App;
